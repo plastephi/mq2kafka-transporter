@@ -1,0 +1,25 @@
+logging:
+  level:
+    star: INFO
+    org.apache.kafka: WARN
+servers:
+  mq:
+    host: localhost
+    port: 1414
+    queue-manager: QM1
+    channel: DEV.ADMIN.SVRCONN
+    queue: DUMMYSOURCE
+    timeout: 2000
+  kafka:
+    bootstrap-servers: localhost:9092
+    topic-name: dummy
+    security-protocol:  SASL_SSL
+    sasl-mechanism: SCRAM-SHA-512
+    secAdmUser: admin
+    secAdmPass: password
+listener:
+  partition-delegate-class: plastephi.messaging.strategy.ModuloPartitionDelegate
+spring:
+  jms:
+    listener:
+      auto-startup: false
